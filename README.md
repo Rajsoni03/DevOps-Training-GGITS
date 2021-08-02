@@ -102,7 +102,7 @@ git commit -m "File-v.1.0"
 # checks commit history
 git log
 ```
-<img src="Screenshot/7.png?raw=true" width="700">
+<img src="Screenshot/7.jpg?raw=true" width="700">
 
 ## Push Project to GitHub (Remote Repository
 
