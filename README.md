@@ -69,8 +69,6 @@ git config --list
 
 ## Create Project Directory and File on EC2 Instance
 
-Login with ec2-user 
-
 ```shell
 # create directory 
 mkdir Project
@@ -106,7 +104,51 @@ git log
 ```
 <img src="Screenshot/7.png?raw=true" width="700">
 
+## Push Project to GitHub (Remote Repository
 
+```shell
+# Connect local repository to GitHub repository
+git remote add origin GitHub_Repo_URL
+
+# Push to GitHub
+git push -u origin master
+```
+
+## Terms 
+
+```shell
+Working Space - 
+Staging Area - 
+Local Repo - 
+Remote Repo - 
+Commit ID and Commit - 
+Cheeksum - 
+Version ID - 
+Tag - 
+Snapshot - 
+push - 
+branch - 
+checkout - 
+```
+
+## Chef
+
+Chef is a Configuration Management Tool.
+Chef Architecture has 3 Components
+
+- Workstation (Where we write the code)
+  - CookBook
+  - Recipe
+- Chef Server (Where we store the code)
+  - Knife
+- Chef Client (Node)  (Where we apply the code)
+  - Ohai
+
+<img src="Screenshot/8.png?raw=true" width="700">
+<img src="Screenshot/9.png?raw=true" width="700">
+<img src="Screenshot/10.png?raw=true" width="700">
+<img src="Screenshot/11.png?raw=true" width="700">
+<img src="Screenshot/12.png?raw=true" width="700">
 
 
 
