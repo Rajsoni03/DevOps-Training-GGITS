@@ -322,7 +322,7 @@ ls /
 ```
 
 <img src="Screenshot/31.png?raw=true" width="700">
-If the Recipe is successfully executed then you will see the myfile is created in root directory.
+If the Recipe is successfully executed then you will see the myfile is created in root directory.<br>
 
 ```shell
 # read myfile using cat 
