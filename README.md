@@ -427,6 +427,19 @@ STEP 4 : - Change Type from HTTPS to HTTP and save rules
 
 <img src="Screenshot/43.png?raw=true" width="700">
 
+## Open Web Page
+
+STEP 1 : - Copy Public IPv4 address of your EC2 instance
+
+<img src="Screenshot/44.png?raw=true" width="700">
+
+STEP 2 : - Paste the address on web browser 
+
+<img src="Screenshot/45.png?raw=true" width="700">
+
+You're web-page is successfully deployed.
+
+
 
 
 
