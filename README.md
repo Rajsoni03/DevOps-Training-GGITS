@@ -333,6 +333,81 @@ cat /myfile
 (We wrote this message in test-recipe.rb file.)
 
 
+## Install and Run Apache Web Server on EC2 using Chef
+
+```shell
+# list directory
+ls
+
+# change directory
+cd cookbooks
+```
+
+<img src="Screenshot/33.png?raw=true" width="700">
+
+```shell
+# create new cookbook
+chef generate cookbook apache-cookbook
+
+# change directory
+cd apache-cookbook
+```
+
+<img src="Screenshot/34.png?raw=true" width="700">
+
+```shell
+# create new recipe
+chef generate recipe apache-recipe
+```
+
+<img src="Screenshot/35.png?raw=true" width="700">
+
+```shell
+# show directory 
+tree
+```
+
+<img src="Screenshot/36.png?raw=true" width="700">
+
+```shell
+# open recipe in vi editor
+vi ./recipes/apache-recipe.rb
+```
+
+add following code in recipe
+```ruby
+package 'httpd' do
+action :install
+end
+
+file '/var/www/html/index.html' do
+content '<h1>Hello World!</h1><h3>This is My First Website</h3>'
+action :create
+owner 'root'
+group 'root'
+end
+
+service 'httpd' do
+action [:enable, :start]
+end
+```
+
+<img src="Screenshot/37.png?raw=true" width="700">
+press `Es`c then press **:wq** and press `Enter` to save and exit
+
+```shell
+# execute the recipe
+chef exec ruby -c ./recipes/apache-recipe.rb
+```
+<img src="Screenshot/38.png?raw=true" width="700">
+
+```shell
+# run the recipe 
+chef-client -zr "recipe[apache-cookbook::apache-recipe]"
+```
+
+<img src="Screenshot/39.png?raw=true" width="700">
+
 
 
 
