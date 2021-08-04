@@ -409,7 +409,23 @@ chef-client -zr "recipe[apache-cookbook::apache-recipe]"
 <img src="Screenshot/39.png?raw=true" width="700">
 
 
+## AWS EC2 Security Setup
 
+STEP 1 : - Select EC2 instance then select Security Column
+
+<img src="Screenshot/40.png?raw=true" width="700">
+
+STEP 2 : - Click on Security Group ID
+
+<img src="Screenshot/41.png?raw=true" width="700">
+
+STEP 3 : - Click on Edit inbound rules
+
+<img src="Screenshot/42.png?raw=true" width="700">
+
+STEP 4 : - Change Type from HTTPS to HTTP and save rules
+
+<img src="Screenshot/43.png?raw=true" width="700">
 
 
 
