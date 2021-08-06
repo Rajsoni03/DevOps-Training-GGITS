@@ -484,13 +484,13 @@ cd apache-cookbook
 chef generate recipe attributes-recipe
 ```
 
+<img src="Screenshot/49.png?raw=true" width="700">
+
 STEP 2 :- Edit the recipe
 
 ```shell
 vi ./recipes/attributes-recipe.rb
 ```
-
-<img src="Screenshot/49.png?raw=true" width="700">
 
 ```shell
 # execute and run recipe
@@ -522,6 +522,105 @@ chef-client -zr "recipe[apache-cookbook::attributes-recipe]"
 ```
 
 <img src="Screenshot/51.png?raw=true" width="700">  
+
+
+## Chef Server (Attaching Chef Server to WorkStation)
+
+
+STEP 1:- Open https://manage.chef.io <br>
+
+
+STEP 2:- Create your account <br>
+
+
+STEP 3:- Go to starter kit  <br>
+
+<img src="Screenshot/52.png?raw=true" width="700"> 
+
+STEP 4:- Download and Extract the file.
+
+<img src="Screenshot/53.png?raw=true" width="700">  
+
+STEP 5:- After extracting the file we will have file named chef-repo and we have to copy this file to our Linux system to do that
+
+STEP 6:- Download WinSCP Applicatrion in windos machine. With this we can transfer files from our local windows machine to Linux machine.
+WinSCP Link - https://winscp.net/eng/download.php
+
+STEP 7:- Install it (just click next ...next while installing)
+
+STEP 8:- Open WinSCP, this screen will come up
+
+<img src="Screenshot/54.png?raw=true" width="700">  
+
+STEP 9:- Fill these empty fields 
+- Host name <PUBLIC IPv4 DNS OF LINUX MACHINE>
+- User name <ec2-user>
+
+<img src="Screenshot/55.png?raw=true" width="700">  
+
+STEP 10:- Go to Advance option.
+- Go to Authentication
+- Give the same private key as your Linux machine (that ppk private key)
+
+<img src="Screenshot/56.png?raw=true" width="700">  
+
+STEP 11:- After selecting the private key, click and just Login
+
+<img src="Screenshot/57.png?raw=true" width="700"> 
+
+STEP 12:- Now two windows will open left one will be for windows and right one for Linux. From window of windows go to chef-repo folder drag that folder to Linux machine.
+
+<img src="Screenshot/58.png?raw=true" width="700"> 
+
+STEP 13:- Now we can go to Linux CLI and check if the chef-repo file is there by typing ls command
+
+```shell
+cd chef-repo
+
+ls -a
+
+cd .chef
+
+ls 
+
+cat config.rb 
+```
+(chef server url will come up along with some other info)
+
+<img src="Screenshot/59.png?raw=true" width="700"> 
+
+STEP 14:- Now we can connect our workstation by using knife command
+
+```shell
+knife ssl check 
+```
+<b>ssl - secure socket layer</b>
+
+<img src="Screenshot/60.png?raw=true" width="700"> 
+
+This means your workstation is successfully connected to Chef Server
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
