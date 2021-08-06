@@ -813,14 +813,242 @@ STEP 3:- Check the Website
 <img src="Screenshot/84.png?raw=true" width="700"> 
 
 
+## Interview Questions
+
+- Q.1  Why DevOps? Where you used DevOps?
+- Q.2  Which s/w you used in DevOps?
+- Q.3  Which tool u use?
+- Q.4  Difference b/w Development and Operations.
+- Q.5  Git / GitLab / GitHub?
+- Q.6  Which platform you use in DevOps?
+- Q.7  Why infinite loop in DevOps?
+- Q.8  Where you use Git Bash?
+- Q.9  Configuration Management and Types of Version Control Systems ?
+- Q.10  Chef workstation / Chef server/ Chef nodes/ Chef client / knife / recipe / bootstrapping,
+- Q.11  Operational tool in DevOps?
+- Q.12  Have you do testing in the DevOps project?
+- Q.13  Agile description / Scrum Framework?
+- Q.14  CI/CD (*Imp)
+- Q.15  Learn more about cloud computing (*Imp)?
+- Q.16  LINUX Command
+  - package install command
+  - file system
+  - remove command
+  - learn more basics command
 
 
+## Final Project (Connect Chef-Server and Nodes to GitHub Repository and Automate them)
+
+STEP 1:- Create a New Folder in your Windows machine.
+
+<img src="Screenshot/85.png?raw=true" width="700"> 
+
+STEP 2 :- Create a index.html file in the folder.
+
+<img src="Screenshot/86.png?raw=true" width="700"> 
+
+STEP 3 :- Open index.html file in any text editor and write the html code.
+
+<img src="Screenshot/87.png?raw=true" width="700"> 
+
+STEP 4 :- Create New GitHub Repository
+
+<img src="Screenshot/88.png?raw=true" width="700"> 
+
+STEP 5 :- Open Git Bash in same folder.
+
+<img src="Screenshot/89.png?raw=true" width="700"> 
+
+STEP 6 :- Connect local repository to GitHub repository and push the code.
+```bash
+git init
+
+git add .
+
+git commit -m "index.html file added"
+
+git remote add origin <github_repo_ssh_url>
+
+git push -u origin master
+```
+
+<img src="Screenshot/90.png?raw=true" width="700"> 
+
+STEP 7 :- Check GitHub Repository
+
+<img src="Screenshot/91.png?raw=true" width="700"> 
+
+STEP 8 :- Open EC2 instance terminal with ec2-user
+
+```shell
+# switch to super user
+sudo su
+
+# goto apache-cookbook directory
+cd chef-repo/cookbooks/apache-cookbook/
+
+# open apache recipe in vi editor
+vi recipes/apache-recipe.rb
+```
+
+STEP 9 :- Deleting existing html file <br>
+
+Add the following ruby code in apache-recipe.rb file
+
+```ruby
+file '/var/www/html/index.html' do 
+action :delete
+end
+```
+
+<img src="Screenshot/92.png?raw=true" width="700"> 
+
+STEP 10 :- Test the recipe in chef server
+
+```shell
+# Execute the recipe
+chef exec ruby -c ./recipes/apache-recipe.rb 
+
+# deploy the recipe
+chef-client -zr "recipe[apache-cookbook::apache-recipe]"
+```
+
+<img src="Screenshot/93.png?raw=true" width="700"> 
+
+STEP 11 :- Deploy the cookbook to chef nodes
+
+```shell
+# goto parent directory 
+cd ..
+
+# Upload the apache-cookbook 
+knife cookbook upload apache-cookbook
+```
+
+<img src="Screenshot/94.png?raw=true" width="700"> 
+
+it will delete index.html file from all connected nodes<br><br>
+
+STEP 12 :- Connect Chef to GitHub 
+
+```shell
+# goto apache-cookbook directory
+cd chef-repo/cookbooks/apache-cookbook/
+
+# open apache recipe in vi editor
+vi recipes/apache-recipe.rb
+```
+
+Add the following ruby code in apache-recipe.rb file
+
+```ruby
+package 'httpd' do
+action :install
+end
+
+package 'git' do
+action :install
+end
+
+bash 'git_pull' do
+user 'root'
+cwd '/var/www/html'
+code <<-EOH
+git init
+git remote add origin <YOUR_GITHUB_REPO_URL>
+git pull origin master
+EOH
+end
+
+service 'httpd' do
+action [:enable, :start]
+end
+```
+
+<img src="Screenshot/95.png?raw=true" width="700"> 
+
+STEP 13 :- Test the recipe in chef server
+
+```shell
+# Execute the recipe
+chef exec ruby -c ./recipes/apache-recipe.rb 
+
+# deploy the recipe
+chef-client -zr "recipe[apache-cookbook::apache-recipe]"
+```
+
+<img src="Screenshot/96.png?raw=true" width="700"> 
 
 
+STEP 14 :- Copy Chef-server IPv4 and Check the web-page 
+
+<img src="Screenshot/97.png?raw=true" width="700"> 
+<img src="Screenshot/98.png?raw=true" width="700"> 
+We successfully connected our chef server to GitHub repository.<br> <br>
 
 
+STEP 15 : - deploy the recipe to chef node machines
+
+```shell
+# goto parent directory 
+cd ..
+
+# Upload the apache-cookbook
+knife cookbook upload apache-cookbook
+```
+
+<img src="Screenshot/99.png?raw=true" width="700"> 
+
+STEP 16 :- Copy Chef-Node IPv4 and Check the web-page
+
+<img src="Screenshot/100.png?raw=true" width="700"> 
+
+<img src="Screenshot/101.png?raw=true" width="700"> 
 
 
+STEP 17 :- Now we want to automate the process of pull the code from GitHub and uploading the cookbook to chef nodes.<br>
+
+Open chef workstation terminal
+
+```shell
+# open crontab file
+vi /etc/crontab
+```
+
+Add the following command 
+
+```shell
+* * * * * root "cd /var/www/html && git pull origin master && cd /home/ec2-user/chef-repo/cookbooks knife cookbook upload apache-cookbook"
+```
+
+<img src="Screenshot/102.png?raw=true" width="700"> 
+
+STEP 18 :- Test the automation.<br>
+
+Update the html file in your local machine
+
+<img src="Screenshot/103.png?raw=true" width="700"> 
+
+Commit changes and push to GitHub
+
+<img src="Screenshot/104.png?raw=true" width="700">
+
+Copy your node IPv4 and paste in web browser 
+ 
+<img src="Screenshot/105.png?raw=true" width="700"> 
+
+Now our chef is successfully connected to GitHub and deployment is fully automated. <br><br>
+
+
+STEP 19:- Edit Html code with your creativity and push to GitHub. Your website is automatically updated within a minute.
+
+<img src="Screenshot/106.png?raw=true" width="700"> 
+
+HTML code link - https://github.com/Rajsoni03/GGITS-Training/blob/master/index.html
+
+<img src="Screenshot/107.png?raw=true" width="700"> 
+
+Congratulations Your Project is Successfully Automated.
 
 
 
