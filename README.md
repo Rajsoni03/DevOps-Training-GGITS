@@ -732,19 +732,85 @@ knife cookbook upload apache-cookbook
 <img src="Screenshot/77.png?raw=true" width="700"> 
 
 
+## Cherf Node Setup
+
+STEP 1:- Convert Node-key.pem to Node-key.ppk using putty-gen<br>
+
+STEP 2:- Login to node machine with ec2-user
+
+```shell
+# switch to super user
+sudo su
+
+# run the pull request
+chef-client 
+```
+
+STEP 3:- Automate the pull request process
+
+```shell
+# open crontab file using vi editor
+vi /etc/crontab
+```
+
+Add the following line
+```shell
+* * * * * root chef-client 
+```
 
 <img src="Screenshot/78.png?raw=true" width="700"> 
+
+Save and quit from editor using <br>:wq</b>
+
+## Check the Web page
+
+STEP 1:- Copy Node's Public IPv4 address 
+
 <img src="Screenshot/79.png?raw=true" width="700"> 
+
+Step 2:- Paste on Web Browser 
+
 <img src="Screenshot/80.png?raw=true" width="700"> 
 
 
+## Automate Chef Node While Creating/Launching
+
+Add the default command in <b>Configuration Instance Details Step</b>
+
+```shell
+#!/bin/bash
+sudo su
+yum update -y
+echo "* * * * * root chef-client"  >>  /etc/crontab
+```
+
+<img src="Screenshot/81.png?raw=true" width="700"> 
 
 
+## Update the Web Page
 
+Goto Chef Work Station Terminal<br>
 
+STEP 1:- Edit the Recipe
 
+```shell
+# Open apache-recipe in vi editor
+vi apache-cookbook/recipes/apache-recipe.rb
+```
 
+<img src="Screenshot/82.png?raw=true" width="700"> 
 
+STEP 2 :- Upload the cookbook to Node
+
+```shell
+knife cookbook upload apache-cookbook
+```
+
+<img src="Screenshot/83.png?raw=true" width="700"> 
+
+STEP 3:- Check the Website
+
+<img src="Screenshot/84.png?raw=true" width="700"> 
 
 
 
