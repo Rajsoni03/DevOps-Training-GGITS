@@ -601,7 +601,141 @@ knife ssl check
 This means your workstation is successfully connected to Chef Server
 
 
+## Create New Chef Node
 
+<b>*Important*</b><br>
+Note the Availability Zone of your Work Station Machine (We create Node Machine at same Availability Zone)
+
+<img src="Screenshot/61.png?raw=true" width="700"> 
+
+STEP 1:- Create new AWS Linux Machine <br>
+
+STEP 2:- Select Availability Zone same as workstation machine
+
+<img src="Screenshot/62.png?raw=true" width="700"> 
+
+STEP 3:- Write the default executable code (It execute while instance is initialling)
+
+<img src="Screenshot/63.png?raw=true" width="700"> 
+
+STEP 4:- Add Tag
+
+<img src="Screenshot/64.png?raw=true" width="700"> 
+
+STEP 5:- Configure Security Group
+
+<img src="Screenshot/65.png?raw=true" width="700"> 
+
+STEP 6:- Create New key pair
+
+<img src="Screenshot/66.png?raw=true" width="700">
+
+## Connect Nodes to Chef Server
+
+STEP 1:- Login in workstation machine with <b>ec2-user</b>
+
+```shell
+# switch to super user
+sudo su
+
+# list directory
+ls
+
+# Change directory
+cd cookbooks
+
+# list directory
+ls
+```
+
+<img src="Screenshot/67.png?raw=true" width="700"> 
+
+STEP 2:- Move apache-cookbook to chef-repo/cookbooks
+
+<img src="Screenshot/68.png?raw=true" width="700"> 
+
+```shell
+# go to perent directory
+cd ..
+
+# move apache-cookbook and test-cookbook1
+mv cookbooks/apache-cookbook chef-repo/cookbooks/
+mv cookbooks/test-cookbook1 chef-repo/cookbooks/
+
+# delete old cookbooks directory
+rm -rf cookbooks
+
+# list directory
+ls
+```
+
+<img src="Screenshot/69.png?raw=true" width="700"> 
+
+```shell
+# check chef-repo/cookbooks
+cd chef-repo
+cd cookbooks
+ls
+```
+
+<img src="Screenshot/70.png?raw=true" width="700"> 
+
+STEP 3:- Copy Node-key.pem file to Chef workstation using WinSCP software
+
+<img src="Screenshot/71.png?raw=true" width="700"> 
+
+
+```shell
+# Check the key
+cd .. 
+ls
+```
+
+<img src="Screenshot/72.png?raw=true" width="700"> 
+
+STEP 4 :- Bootstrapping (Connecting Node to Chef Server using Knife)
+
+```shell
+knife bootstrap <node private IP> --ssh-user ec2-user --sudo -i Node-key.pem -N Node1
+```
+
+<img src="Screenshot/73.png?raw=true" width="700"> 
+<img src="Screenshot/74.png?raw=true" width="700"> 
+
+
+```shell
+# Show all nodes
+knife node list
+```
+
+<img src="Screenshot/75.png?raw=true" width="700"> 
+
+
+STEP 5:- Set Cookbook to Run List of Chef Node
+
+```shell
+# Set Cookbook 
+knife node run_list set Node1 "recipe[apache-cookbook::apache-recipe]"
+
+# Check the run_list of the Node
+knife node show Node1
+```
+
+<img src="Screenshot/76.png?raw=true" width="700"> 
+
+STEP 6:- Upload the cookbook to Node 
+
+```shell
+knife cookbook upload apache-cookbook
+```
+
+<img src="Screenshot/77.png?raw=true" width="700"> 
+
+
+
+<img src="Screenshot/78.png?raw=true" width="700"> 
+<img src="Screenshot/79.png?raw=true" width="700"> 
+<img src="Screenshot/80.png?raw=true" width="700"> 
 
 
 
