@@ -440,13 +440,88 @@ STEP 2 : - Paste the address on web browser
 You're web-page is successfully deployed.
 
 
+## Update Website
+
+```shell
+# open recipe using vi
+vi ./recipes/apache-recipe.rb
+```
+
+<img src="Screenshot/46.png?raw=true" width="700">
+
+```shell
+# execute and run recipe
+chef exec ruby -c ./recipes/apache-recipe.rb
+chef-client -zr "recipe[apache-cookbook::apache-recipe]"
+```
+
+<img src="Screenshot/47.png?raw=true" width="700">    
+
+<img src="Screenshot/48.png?raw=true" width="700">                                                        
 
 
+## Attributes of Chef
 
+```shell
+ohai
 
+ohai ipaddress
 
+ohai memory
 
+ohai memory/total
+```
 
+## Show the Attributes of Chef using Recipe
+
+STEP 1:- Create a new Recipe
+
+```shell
+cd cookbooks
+ 
+cd apache-cookbook
+
+chef generate recipe attributes-recipe
+```
+
+STEP 2 :- Edit the recipe
+
+```shell
+vi ./recipes/attributes-recipe.rb
+```
+
+<img src="Screenshot/49.png?raw=true" width="700">
+
+```shell
+# execute and run recipe
+chef exec ruby -c ./recipes/apache-recipe.rb
+chef-client -zr "recipe[apache-cookbook::apache-recipe]"
+```
+
+STEP 3 :- Add the following code in recipe
+
+```ruby
+file '/basicfile' do
+content "This is a file to get and learn attributes
+HOSTNAME: #{node['hostname']}
+IPADDRESS: #{node['ipaddress']}
+MEMORY: #{node['memory']['total']}"
+owner 'root'
+group 'root'
+action :create
+end
+```
+
+<img src="Screenshot/50.png?raw=true" width="700">   
+
+STEP 4 :- Execute and run the recipe
+
+```shell
+chef exec ruby -c ./recipes/attributes-recipe.rb
+chef-client -zr "recipe[apache-cookbook::attributes-recipe]"
+```
+
+<img src="Screenshot/51.png?raw=true" width="700">  
 
 
 
