@@ -553,8 +553,8 @@ STEP 8:- Open WinSCP, this screen will come up
 <img src="Screenshot/54.png?raw=true" width="700">  
 
 STEP 9:- Fill these empty fields 
-- Host name <PUBLIC IPv4 DNS OF LINUX MACHINE>
-- User name <ec2-user>
+- Host name = PUBLIC IPv4 DNS OF LINUX MACHINE
+- User name = ec2-user
 
 <img src="Screenshot/55.png?raw=true" width="700">  
 
