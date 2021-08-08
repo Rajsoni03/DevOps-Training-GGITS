@@ -839,6 +839,8 @@ STEP 3:- Check the Website
 
 ## Final Project (Connect Chef-Server and Nodes to GitHub Repository and Automate them)
 
+<img src="Screenshot/108.png?raw=true" width="700"> 
+
 STEP 1:- Create a New Folder in your Windows machine.
 
 <img src="Screenshot/85.png?raw=true" width="700"> 
