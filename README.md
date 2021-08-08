@@ -116,19 +116,19 @@ git push -u origin master
 
 ## Important Terms & Definitions
 
-<b>Working Space - </b> It is where the code is written & is called the workspace.<br>
-<b>Staging Area - </b> When code needs to be committed, it is added to the staging area. In other words we can say when the code needs to be finalized it comes in staging area. This process is called "Add".<br>
-<b>Local Repo - </b> When the code is final, we commit the code from staging area to local repository. Local repo is present inside the Linux machine.<br>
-<b>Remote Repo - </b> A remote repo is a git repository hosted on the internet or some other network.<br>
-<b>Commit ID and Commit - </b>Commit ID is the metadata  stored with the file, it is 40 alphanumeric characters. Bringing the file from staging area to Local repository is called "Commit", it means that all the code that has been written is finally saved.<br>
-<b>Cheeksum - </b> It is a numeric value attached with the file, when the file is updated the checksum value changes hence we get to know that the file/data/code has been updated.<br>
-<b>Version ID - </b> Reference to identify each change, when the user updates the file the version ID depicts about who did so.<br>
-<b>Tag - </b> With the commit ID a tag can also be attached which contains a message of what has been updated lastly.<br>
-<b>Snapshot - </b> The changes that are made in file is snapshot, changes that are made in a particular time.<br>
-<b>Push - </b> What all has been committed in local repository now is pushed to Central Repository(GitHub/GitLab or any other) this is called push.<br>
-<b>Push - </b> Pull operation copes the changes from a remote repository to a local machine. Pull operation is also used as synchronization between the two repositories<br>
-<b>Branch - </b> Code is same so only one repository is created but when we want to work in parallel, 'branch' is created in which changes are personal to that branch only and finally it is clubbed together with other branches.<br>
-<b>Checkout - </b> This command Is used to switch in between the branches and check for the updated files or any new commits to it.<br>
+<b>Working Space - </b> It is where the code is written & is called the workspace.<br><br>
+<b>Staging Area - </b> When code needs to be committed, it is added to the staging area. In other words we can say when the code needs to be finalized it comes in staging area. This process is called "Add".<br><br>
+<b>Local Repo - </b> When the code is final, we commit the code from staging area to local repository. Local repo is present inside the Linux machine.<br><br>
+<b>Remote Repo - </b> A remote repo is a git repository hosted on the internet or some other network.<br><br>
+<b>Commit ID and Commit - </b>Commit ID is the metadata  stored with the file, it is 40 alphanumeric characters. Bringing the file from staging area to Local repository is called "Commit", it means that all the code that has been written is finally saved.<br><br>
+<b>Cheeksum - </b> It is a numeric value attached with the file, when the file is updated the checksum value changes hence we get to know that the file/data/code has been updated.<br><br>
+<b>Version ID - </b> Reference to identify each change, when the user updates the file the version ID depicts about who did so.<br><br>
+<b>Tag - </b> With the commit ID a tag can also be attached which contains a message of what has been updated lastly.<br><br>
+<b>Snapshot - </b> The changes that are made in file is snapshot, changes that are made in a particular time.<br><br>
+<b>Push - </b> What all has been committed in local repository now is pushed to Central Repository(GitHub/GitLab or any other) this is called push.<br><br>
+<b>Push - </b> Pull operation copes the changes from a remote repository to a local machine. Pull operation is also used as synchronization between the two repositories<br><br>
+<b>Branch - </b> Code is same so only one repository is created but when we want to work in parallel, 'branch' is created in which changes are personal to that branch only and finally it is clubbed together with other branches.<br><br>
+<b>Checkout - </b> This command Is used to switch in between the branches and check for the updated files or any new commits to it.<br><br>
 
 
 ## Chef
