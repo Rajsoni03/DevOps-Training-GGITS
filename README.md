@@ -1,6 +1,6 @@
 # DevOps-Training-GGITS
 
-## DevOps
+## DevOps Pipeline
 
 Step 1- Developer -- Code -Git/ GitHub<br>
 Step 2- Build (.exe)  (Tools - Jenkins/Maven)<br>
