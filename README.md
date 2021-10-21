@@ -126,7 +126,7 @@ git push -u origin master
 <b>Tag - </b> With the commit ID a tag can also be attached which contains a message of what has been updated lastly.<br><br>
 <b>Snapshot - </b> The changes that are made in file is snapshot, changes that are made in a particular time.<br><br>
 <b>Push - </b> What all has been committed in local repository now is pushed to Central Repository(GitHub/GitLab or any other) this is called push.<br><br>
-<b>Push - </b> Pull operation copes the changes from a remote repository to a local machine. Pull operation is also used as synchronization between the two repositories<br><br>
+<b>Pull - </b> Pull operation copes the changes from a remote repository to a local machine. Pull operation is also used as synchronization between the two repositories<br><br>
 <b>Branch - </b> Code is same so only one repository is created but when we want to work in parallel, 'branch' is created in which changes are personal to that branch only and finally it is clubbed together with other branches.<br><br>
 <b>Checkout - </b> This command Is used to switch in between the branches and check for the updated files or any new commits to it.<br><br>
 
@@ -279,7 +279,7 @@ vi ./recipes/test-recipe1.rb
 file '/myfile' do
 content 'Welcome to DevOps - Chef configuration Management Tool - GGITS'
 action:create
-en
+end
 ```
 
 <img src="Screenshot/25.png?raw=true" width="700">
