@@ -1046,7 +1046,7 @@ STEP 19:- Edit Html code with your creativity and push to GitHub. Your website i
 
 <img src="Screenshot/106.png?raw=true" width="700"> 
 
-HTML code link - https://github.com/Rajsoni03/GGITS-Training/blob/master/index.html
+HTML code link - https://github.com/Rajsoni03/DevOps-Training-GGITS/blob/master/index.html
 
 <img src="Screenshot/107.png?raw=true" width="700"> 
 
